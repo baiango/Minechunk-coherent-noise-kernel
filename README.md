@@ -113,7 +113,7 @@ chunk_sizes=16^3,64^3,128^3 benchmark_passes=5 ca_smooth_passes=5 repeats=1000 m
 
 These numbers are machine-specific. Rerun the benchmark before comparing optimization patches.
 
-| Implementation | Feature | Chunk size | Function name | iteration per sample | Median seconds | Median M samples/s | Median ns/sample | Checksum |
+| Implementation | Feature | Chunk size | Function name | Iteration per sample | Median seconds | Median M samples/s | Median ns/sample | Checksum |
 |---|---|---:|---|---:|---:|---:|---:|---:|
 | Zig | sme2 | 16^3 | `cellular_automata.cellularAutomataChunk3dWithScratch` | 5 | 0.000038 | 534.838 | 1.870 | 15790809018075169208 |
 | Zig | sme1 | 16^3 | `cellular_automata_sme1.cellularAutomataChunk3dWithScratch` | 5 | 0.000041 | 499.013 | 2.004 | 15790809018075169208 |

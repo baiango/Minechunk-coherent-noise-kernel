@@ -246,7 +246,7 @@ fn medianElapsedNs(timings: []u64) f64 {
 }
 
 fn printMarkdownHeader() void {
-    std.debug.print("| Implementation | Feature | Chunk size | Function name | iteration per sample | Median seconds | Median M samples/s | Median ns/sample | Checksum |\n", .{});
+    std.debug.print("| Implementation | Feature | Chunk size | Function name | Iteration per sample | Median seconds | Median M samples/s | Median ns/sample | Checksum |\n", .{});
     std.debug.print("|---|---|---:|---|---:|---:|---:|---:|---:|\n", .{});
 }
 
