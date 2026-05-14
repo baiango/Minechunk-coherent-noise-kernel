@@ -246,7 +246,7 @@ fn medianElapsedNs(timings: []u64) f64 {
 }
 
 fn printMarkdownHeader() void {
-    std.debug.print("| Implementation | Feature | Chunk size | Function name | Benchmark passes | Median seconds | Median M samples/s | Median ns/sample | Checksum |\n", .{});
+    std.debug.print("| Implementation | Feature | Chunk size | Function name | iteration per sample | Median seconds | Median M samples/s | Median ns/sample | Checksum |\n", .{});
     std.debug.print("|---|---|---:|---|---:|---:|---:|---:|---:|\n", .{});
 }
 
@@ -255,7 +255,7 @@ fn printU64ChecksumTableRow(
     feature: []const u8,
     comptime chunk_size: usize,
     name: []const u8,
-    passes: usize,
+    iterations_per_sample: usize,
     units: usize,
     median_elapsed_ns: f64,
     checksum: u64,
@@ -271,7 +271,7 @@ fn printU64ChecksumTableRow(
             feature,
             chunk_size,
             name,
-            passes,
+            iterations_per_sample,
             median_seconds,
             median_million_units_per_sec,
             median_ns_per_unit,
@@ -285,7 +285,7 @@ fn printF64ChecksumTableRow(
     feature: []const u8,
     comptime chunk_size: usize,
     name: []const u8,
-    passes: usize,
+    iterations_per_sample: usize,
     units: usize,
     median_elapsed_ns: f64,
     checksum: f64,
@@ -298,7 +298,7 @@ fn printF64ChecksumTableRow(
                 feature,
                 chunk_size,
                 name,
-                passes,
+                iterations_per_sample,
                 checksum,
             },
         );
@@ -316,7 +316,7 @@ fn printF64ChecksumTableRow(
             feature,
             chunk_size,
             name,
-            passes,
+            iterations_per_sample,
             median_seconds,
             median_million_units_per_sec,
             median_ns_per_unit,
@@ -333,7 +333,7 @@ fn benchmarkChunkSize(comptime chunk_size: usize, cpu_has_sme: bool, cpu_has_sme
         ca_feature,
         chunk_size,
         "cellular_automata.cellularAutomataChunk3dWithScratch",
-        BenchmarkPasses,
+        SmoothPasses,
         ca_result.units,
         ca_result.median_elapsed_ns,
         ca_result.checksum,
@@ -346,7 +346,7 @@ fn benchmarkChunkSize(comptime chunk_size: usize, cpu_has_sme: bool, cpu_has_sme
         ca_sme1_feature,
         chunk_size,
         "cellular_automata_sme1.cellularAutomataChunk3dWithScratch",
-        BenchmarkPasses,
+        SmoothPasses,
         ca_sme1_result.units,
         ca_sme1_result.median_elapsed_ns,
         ca_sme1_result.checksum,
@@ -358,7 +358,7 @@ fn benchmarkChunkSize(comptime chunk_size: usize, cpu_has_sme: bool, cpu_has_sme
         "no-sme",
         chunk_size,
         "cellular_automata_no_sme.cellularAutomataChunk3dWithScratch",
-        BenchmarkPasses,
+        SmoothPasses,
         ca_no_sme_result.units,
         ca_no_sme_result.median_elapsed_ns,
         ca_no_sme_result.checksum,
@@ -370,7 +370,7 @@ fn benchmarkChunkSize(comptime chunk_size: usize, cpu_has_sme: bool, cpu_has_sme
         "current",
         chunk_size,
         "simplex.simplexNoiseUniformGrid3d",
-        BenchmarkPasses,
+        1,
         simplex_result.units,
         simplex_result.median_elapsed_ns,
         simplex_result.checksum,
@@ -393,7 +393,7 @@ fn benchmarkChunkSize(comptime chunk_size: usize, cpu_has_sme: bool, cpu_has_sme
                 std.mem.span(fastnoise2_result.active_feature),
                 chunk_size,
                 "FastNoise::Generator::GenUniformGrid3D",
-                BenchmarkPasses,
+                1,
                 fastnoise2_result.samples,
                 fastnoise2_result.median_elapsed_ns,
                 fastnoise2_result.checksum,
@@ -404,7 +404,7 @@ fn benchmarkChunkSize(comptime chunk_size: usize, cpu_has_sme: bool, cpu_has_sme
                 "unavailable",
                 chunk_size,
                 "FastNoise::Generator::GenUniformGrid3D",
-                BenchmarkPasses,
+                1,
                 0,
                 0.0,
                 0.0,

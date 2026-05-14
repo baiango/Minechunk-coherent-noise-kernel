@@ -113,20 +113,20 @@ chunk_sizes=16^3,64^3,128^3 benchmark_passes=5 ca_smooth_passes=5 repeats=1000 m
 
 These numbers are machine-specific. Rerun the benchmark before comparing optimization patches.
 
-| Implementation | Feature | Chunk size | Function name | Benchmark passes | Median seconds | Median M samples/s | Median ns/sample | Checksum |
+| Implementation | Feature | Chunk size | Function name | iteration per sample | Median seconds | Median M samples/s | Median ns/sample | Checksum |
 |---|---|---:|---|---:|---:|---:|---:|---:|
 | Zig | sme2 | 16^3 | `cellular_automata.cellularAutomataChunk3dWithScratch` | 5 | 0.000038 | 534.838 | 1.870 | 15790809018075169208 |
 | Zig | sme1 | 16^3 | `cellular_automata_sme1.cellularAutomataChunk3dWithScratch` | 5 | 0.000041 | 499.013 | 2.004 | 15790809018075169208 |
 | Zig | no-sme | 16^3 | `cellular_automata_no_sme.cellularAutomataChunk3dWithScratch` | 5 | 0.000041 | 501.297 | 1.995 | 15790809018075169208 |
-| Zig | current | 16^3 | `simplex.simplexNoiseUniformGrid3d` | 5 | 0.000058 | 350.709 | 2.851 | 5.914207 |
-| FastNoise2 | AARCH64 | 16^3 | `FastNoise::Generator::GenUniformGrid3D` | 5 | 0.000078 | 262.213 | 3.814 | 11.404961 |
+| Zig | current | 16^3 | `simplex.simplexNoiseUniformGrid3d` | 1 | 0.000058 | 350.709 | 2.851 | 5.914207 |
+| FastNoise2 | AARCH64 | 16^3 | `FastNoise::Generator::GenUniformGrid3D` | 1 | 0.000078 | 262.213 | 3.814 | 11.404961 |
 | Zig | sme2 | 64^3 | `cellular_automata.cellularAutomataChunk3dWithScratch` | 5 | 0.001079 | 1215.271 | 0.823 | 9044746895454651478 |
 | Zig | sme1 | 64^3 | `cellular_automata_sme1.cellularAutomataChunk3dWithScratch` | 5 | 0.001078 | 1215.881 | 0.822 | 9044746895454651478 |
 | Zig | no-sme | 64^3 | `cellular_automata_no_sme.cellularAutomataChunk3dWithScratch` | 5 | 0.000987 | 1328.152 | 0.753 | 9044746895454651478 |
-| Zig | current | 64^3 | `simplex.simplexNoiseUniformGrid3d` | 5 | 0.004048 | 323.808 | 3.088 | 23.651272 |
-| FastNoise2 | AARCH64 | 64^3 | `FastNoise::Generator::GenUniformGrid3D` | 5 | 0.005287 | 247.893 | 4.034 | 14.364635 |
+| Zig | current | 64^3 | `simplex.simplexNoiseUniformGrid3d` | 1 | 0.004048 | 323.808 | 3.088 | 23.651272 |
+| FastNoise2 | AARCH64 | 64^3 | `FastNoise::Generator::GenUniformGrid3D` | 1 | 0.005287 | 247.893 | 4.034 | 14.364635 |
 | Zig | sme2 | 128^3 | `cellular_automata.cellularAutomataChunk3dWithScratch` | 5 | 0.007696 | 1362.495 | 0.734 | 14277450722080343520 |
 | Zig | sme1 | 128^3 | `cellular_automata_sme1.cellularAutomataChunk3dWithScratch` | 5 | 0.007761 | 1351.029 | 0.740 | 14277450722080343520 |
 | Zig | no-sme | 128^3 | `cellular_automata_no_sme.cellularAutomataChunk3dWithScratch` | 5 | 0.008454 | 1240.282 | 0.806 | 14277450722080343520 |
-| Zig | current | 128^3 | `simplex.simplexNoiseUniformGrid3d` | 5 | 0.031494 | 332.945 | 3.004 | 31.880825 |
-| FastNoise2 | AARCH64 | 128^3 | `FastNoise::Generator::GenUniformGrid3D` | 5 | 0.043499 | 241.057 | 4.148 | 15.233884 |
+| Zig | current | 128^3 | `simplex.simplexNoiseUniformGrid3d` | 1 | 0.031494 | 332.945 | 3.004 | 31.880825 |
+| FastNoise2 | AARCH64 | 128^3 | `FastNoise::Generator::GenUniformGrid3D` | 1 | 0.043499 | 241.057 | 4.148 | 15.233884 |
