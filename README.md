@@ -9,7 +9,9 @@ This is a practical loop for pushing one hot function down toward the metal with
 Prompt:
 
 ```text
-Give me another unique list of 30 possible directly applicable code-level optimizations only on {function name}.
+Question claims. Verify facts. State uncertainty. Separate evidence from inference. Never invent. Abstain when evidence is insufficient. Use neutral language.
+
+Give me another unique list of 50 possible directly applicable code-level optimizations only on {function name}.
 ```
 
 Paste the full LLM output into the next prompt:
