@@ -11,7 +11,7 @@ Prompt:
 ```text
 Question claims. Verify facts. State uncertainty. Separate evidence from inference. Never invent. Abstain when evidence is insufficient. Use neutral language.
 
-Give me another unique list of 50 possible directly applicable code-level optimizations only on {function name}.
+Give me another unique list of 16 possible directly applicable code-level optimizations only on {function name}.
 ```
 
 Paste the full LLM output into the next prompt:
